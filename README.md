@@ -80,6 +80,53 @@ bin/rails g model User email:string password_digest:string
 bin/rails  db:migrate
 ```
 
+### 命令行方式操作 user模型
+
+> 增
+
+```
+# 输入命令进入命令行模式
+bin/rails console
+
+# 这里输入 u = User.new
+irb(main):001:0> u = User.new
+# 告诉你创建了一个 user对象
+=> #<User id: nil, email: nil, password_digest: nil, created_at: nil, updated_at: nil>
+
+# 设置 email
+irb(main):002:0> u.email = '1@qq.com'
+=> "1@qq.com"
+# 设置 密码
+irb(main):003:0> u.password_digest='xxx'
+=> "xxx"
+
+# 保存
+irb(main):004:0> u.save
+   (1.3ms)  BEGIN
+  User Create (9.1ms)  INSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "1@qq.com"], ["password_digest", "xxx"], ["created_at", "2020-07-01 13:33:19.675420"], ["updated_at", "2020-07-01 13:33:19.675420"]]
+   (4.2ms)  COMMIT
+=> true
+
+
+# 此时去看 数据库 一条数据就录入了
+```
+
+> 查询
+
+- User.all
+- User.all[0] 第一条数据
+- User.first 找出第一个
+
+```
+irb(main):005:0> User.all
+  User Load (5.0ms)  SELECT "users".* FROM "users" LIMIT $1  [["LIMIT", 11]]
+=> #<ActiveRecord::Relation [#<User id: 1, email: "1@qq.com", password_digest: [FILTERED], created_at: "2020-07-01 13:33:19", updated_at: "2020-07-01 13:33:19">]>
+irb(main):006:0> User.all[0]
+  User Load (2.2ms)  SELECT "users".* FROM "users"
+=> #<User id: 1, email: "1@qq.com", password_digest: [FILTERED], created_at: "2020-07-01 13:33:19", updated_at: "2020-07-01 13:33:19">
+irb(main):007:0> 
+```
+
 
 ### 使用方法
 
