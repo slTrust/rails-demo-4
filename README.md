@@ -66,4 +66,30 @@ bin/rails db:create
 
 > 运行
 
+
 `bin/rails s`
+
+### 创建model
+
+```
+# 创建 users 表 并添加两个字段
+# 此时并没有真正创建表，而是创建了 表的迁移语句
+bin/rails g model User email:string password_digest:string
+
+# 你需要继续运行迁移命令
+bin/rails  db:migrate
+```
+
+
+### 使用方法
+
+```
+git clone git@github.com:slTrust/express-starter-1.git <你的目录名>
+cd <你的目录名>
+```
+### 上传到其他仓库
+
+```
+git remote set-url origin 新仓库的地址
+git push -u origin master
+```
