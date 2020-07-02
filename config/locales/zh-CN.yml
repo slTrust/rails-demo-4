@@ -2,11 +2,12 @@ zh-CN:
   activemodel:
     errors:
       models:
-        sesson:
+        session:
           attributes:
             email:
               blank: 邮箱不能为空
               invalid: 邮箱格式不正确
+              not_found: 该邮箱没有注册
             password:
               blank: 密码不能为空
               too_short: 密码不能少于6个字符
