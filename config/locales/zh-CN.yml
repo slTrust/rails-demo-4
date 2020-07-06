@@ -26,4 +26,4 @@ zh-CN:
               too_short: 密码不能少于6个字符
             password_confirmation:
               blank: 请填写确认密码
-              confirmation: 两次密码不一致
+              confirmation: 两次密码不匹配
